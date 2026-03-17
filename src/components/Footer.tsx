@@ -139,6 +139,18 @@ export default function Footer() {
             </span>
           </div>
         </div>
+
+        <p className="text-xs text-gray-600 font-mono mt-2 text-center">
+          BUILT BY ARIS SYSTEMS · POWERED BY CROWDSTRIKE + ELASTIC SIEM ·
+          HOSTED IN FRANCE · NO DATA LEAVES EU · v2.6.1
+        </p>
+
+        <div
+          className="mt-4 text-center font-mono text-gray-700 text-xs select-none"
+          aria-hidden="true"
+        >
+          ——————————————————————————————————————————————————
+        </div>
       </div>
     </footer>
   );

@@ -15,7 +15,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -25,12 +25,15 @@ export default function Header() {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[rgba(5,5,5,0.95)] backdrop-blur-xl"
-          : "bg-[rgba(5,5,5,0.85)] backdrop-blur-md"
-      }`}
-      style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? "rgba(0,0,0,0.95)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled
+          ? "1px solid rgba(0,255,70,0.15)"
+          : "1px solid rgba(255,255,255,0.06)",
+      }}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16">
         <a href="#" className="font-vt text-[24px] text-text">

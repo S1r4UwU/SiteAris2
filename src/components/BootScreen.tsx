@@ -1,29 +1,23 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BOOT_LINES = [
-  "ARIS CYBERSECURITY SYSTEMS v2.6.1",
-  "Copyright (C) 2024-2026 ARIS Corp. All rights reserved.",
-  "",
-  "Initializing threat detection modules....... [OK]",
-  "Loading EDR engine v4.2........................ [OK]",
-  "Connecting to SOC infrastructure.............. [OK]",
-  "Verifying certificates (SHA-256).............. [OK]",
-  "Firewall rules loaded (2,847 entries)......... [OK]",
-  "Zero-trust network access configured......... [OK]",
-  "",
-  "SYSTÈME PRÊT. BIENVENUE.",
+  "ARIS CYBERSECURITY v2.6.1",
+  "© 2026 ARIS SYSTEMS — FRANCE",
+  "[████████████████████] CHARGEMENT MODULES...",
+  "✓ EDR ENGINE — OK",
+  "✓ SIEM CLOUD — OK",
+  "✓ SOC 24/7 — OPÉRATIONNEL",
+  "> INITIALISATION COMPLÈTE",
 ];
-
-const PROMPT = "> Appuyer sur ENTRÉE pour déployer_";
 
 export default function BootScreen({ onComplete }: { onComplete: () => void }) {
   const [lines, setLines] = useState<string[]>([]);
-  const [showPrompt, setShowPrompt] = useState(false);
-  const [flash, setFlash] = useState(false);
+  const [done, setDone] = useState(false);
   const [exiting, setExiting] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     let i = 0;
@@ -33,100 +27,75 @@ export default function BootScreen({ onComplete }: { onComplete: () => void }) {
         i++;
       } else {
         clearInterval(interval);
-        setShowPrompt(true);
+        setDone(true);
       }
     }, 120);
-    return () => clearInterval(interval);
-  }, []);
 
-  const handleEnter = useCallback(() => {
-    if (!showPrompt || exiting) return;
-    setExiting(true);
-    setFlash(true);
-    setTimeout(() => setFlash(false), 60);
-    setTimeout(() => onComplete(), 100);
-  }, [showPrompt, exiting, onComplete]);
+    timerRef.current = setTimeout(() => {
+      setExiting(true);
+      setTimeout(onComplete, 500);
+    }, 2800);
 
-  useEffect(() => {
-    const handler = (e: KeyboardEvent | MouseEvent) => {
-      if (e.type === "keydown" || e.type === "click") handleEnter();
-    };
-    window.addEventListener("keydown", handler);
-    window.addEventListener("click", handler);
     return () => {
-      window.removeEventListener("keydown", handler);
-      window.removeEventListener("click", handler);
+      clearInterval(interval);
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [handleEnter]);
+  }, [onComplete]);
 
   const skip = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
     setExiting(true);
-    onComplete();
+    setTimeout(onComplete, 100);
   };
 
   return (
     <AnimatePresence>
-      {!exiting && (
+      {!exiting ? (
         <motion.div
+          key="boot"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[9999] flex items-center justify-center"
           style={{ background: "#000000" }}
         >
-          {flash && (
-            <div className="fixed inset-0 bg-white z-[10000]" />
-          )}
-
-          <div className="max-w-[640px] w-full px-8">
-            {lines.map((line, i) => {
-              if (!line) {
-                return (
-                  <div key={i} className="font-mono text-[13px] leading-[1.9] text-white/90"
-                    style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                    {"\u00A0"}
-                  </div>
-                );
-              }
-              return (
-                <div
-                  key={i}
-                  className="font-mono text-[13px] leading-[1.9] text-white/90"
-                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                >
-                  {line.includes("[OK]") ? (
-                    <>
-                      {line.replace("[OK]", "")}
-                      <span className="text-cyber-green">[OK]</span>
-                    </>
-                  ) : (
-                    line
-                  )}
-                </div>
-              );
-            })}
-
-            {showPrompt && (
+          <div className="max-w-[560px] w-full px-8">
+            {lines.map((line, i) => (
               <div
-                className="mt-6 font-mono text-[13px] text-white"
+                key={i}
+                className="text-[15px] leading-[2] text-white/90"
+                style={{ fontFamily: "'VT323', monospace" }}
+              >
+                {line.startsWith("✓") ? (
+                  <>
+                    <span className="text-[#00FF46]">✓</span>
+                    {line.slice(1)}
+                  </>
+                ) : (
+                  line
+                )}
+              </div>
+            ))}
+
+            {done && (
+              <span
+                className="inline-block w-2 h-2 rounded-full mt-3"
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  background: "#00FF46",
                   animation: "blink-cursor 1s step-end infinite",
                 }}
-              >
-                {PROMPT}
-              </div>
+              />
             )}
           </div>
 
           <button
             onClick={skip}
-            className="fixed bottom-8 right-8 font-mono text-[10px] tracking-[0.15em] text-white/20 hover:text-white/50 transition-colors uppercase"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            className="fixed bottom-8 right-8 text-[11px] tracking-[0.15em] text-white/15 hover:text-white/40 transition-colors uppercase"
+            style={{ fontFamily: "'VT323', monospace" }}
           >
             SKIP
           </button>
         </motion.div>
-      )}
+      ) : null}
     </AnimatePresence>
   );
 }

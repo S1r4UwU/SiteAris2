@@ -28,9 +28,9 @@ export default function RootLayout({
     <html lang="fr">
       <body className="antialiased">
         <GlobalGrid />
-        <FilmGrain />
         <CustomCursor />
         {children}
+        <FilmGrain />
       </body>
     </html>
   );

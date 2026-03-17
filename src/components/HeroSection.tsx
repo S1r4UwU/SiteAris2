@@ -12,12 +12,12 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-start overflow-hidden">
       <GridBackground />
 
-      {/* Radial halo behind title — offset left */}
+      {/* Radial halo vert behind title */}
       <div
         className="absolute inset-0 pointer-events-none z-0"
         style={{
           background:
-            "radial-gradient(ellipse 1000px 600px at 20% 50%, rgba(255,255,255,0.06) 0%, transparent 65%)",
+            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,255,70,0.07) 0%, transparent 70%)",
         }}
       />
 
