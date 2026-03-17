@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Server, Globe, Cpu, Database } from "lucide-react";
-import ScrambleText from "./ScrambleText";
 
 const INFRA_ITEMS = [
   {
@@ -53,16 +52,19 @@ export default function InfraSection() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-2xl">
-          <span className="font-mono text-[11px] tracking-[0.2em] text-text-tertiary uppercase block mb-4">
+          <span className="font-vt text-[16px] text-text-tertiary uppercase block mb-4">
             {"// INFRASTRUCTURE"}
           </span>
-          <ScrambleText
-            text="Conçu pour résister."
-            as="h2"
-            className="font-geist text-3xl md:text-5xl font-semibold text-text tracking-tight"
-            delay={200}
-          />
-          <p className="mt-4 font-geist text-base text-text-secondary leading-relaxed max-w-lg">
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="font-grotesk text-3xl md:text-5xl font-bold text-text"
+            style={{ letterSpacing: "-0.04em" }}
+          >
+            Conçu pour résister.
+          </motion.h2>
+          <p className="mt-4 font-grotesk text-[15px] text-text-secondary leading-[1.7] max-w-lg">
             Notre stack technique est pensée pour les environnements critiques.
             Souveraineté, performance, résilience.
           </p>
@@ -91,14 +93,14 @@ export default function InfraSection() {
                 >
                   <item.icon size={18} strokeWidth={1.5} />
                 </div>
-                <span className="font-mono text-[10px] tracking-[0.2em] text-text-tertiary/60 uppercase">
+                <span className="font-vt text-[14px] text-text-tertiary/60 uppercase">
                   {item.tag}
                 </span>
               </div>
-              <h3 className="font-mono text-sm font-bold tracking-[0.08em] text-text">
+              <h3 className="font-vt text-[18px] text-text">
                 {item.title}
               </h3>
-              <p className="font-geist text-sm text-text-secondary leading-relaxed">
+              <p className="font-grotesk text-[14px] text-text-secondary leading-[1.7]">
                 {item.description}
               </p>
             </motion.div>

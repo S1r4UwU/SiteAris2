@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -17,7 +16,7 @@ export default function ComplianceBadges() {
   return (
     <section ref={ref} className="relative py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
-        <span className="font-mono text-[10px] tracking-[0.15em] text-text-muted uppercase block mb-6">
+        <span className="font-vt text-[16px] text-text-muted uppercase block mb-6">
           {"// CONFORMITÉ & CERTIFICATIONS"}
         </span>
 
@@ -32,17 +31,13 @@ export default function ComplianceBadges() {
                 duration: 0.35,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className="font-mono text-[11px] tracking-[0.1em] text-text-tertiary px-5 py-3 transition-all duration-200 hover:text-[#AAAAAA] cursor-default"
-              style={{
-                border: "1px solid rgba(255,255,255,0.1)",
-              }}
+              className="font-vt text-[16px] text-text-tertiary px-5 py-3 transition-all duration-200 hover:text-[#AAAAAA]"
+              style={{ border: "1px solid rgba(255,255,255,0.1)" }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor =
-                  "rgba(255,255,255,0.25)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.25)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor =
-                  "rgba(255,255,255,0.1)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
               }}
             >
               {badge}

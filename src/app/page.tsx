@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import BootScreen from "@/components/BootScreen";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import Marquee from "@/components/Marquee";
@@ -10,6 +14,30 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const [booted, setBooted] = useState(false);
+  const [showBoot, setShowBoot] = useState(false);
+
+  useEffect(() => {
+    const hasBooted = localStorage.getItem("aris_booted");
+    if (hasBooted) {
+      setBooted(true);
+    } else {
+      setShowBoot(true);
+    }
+  }, []);
+
+  const handleBootComplete = () => {
+    localStorage.setItem("aris_booted", "true");
+    setBooted(true);
+    setShowBoot(false);
+  };
+
+  if (showBoot && !booted) {
+    return <BootScreen onComplete={handleBootComplete} />;
+  }
+
+  if (!booted) return null;
+
   return (
     <>
       <Header />

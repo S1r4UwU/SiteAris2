@@ -32,7 +32,7 @@ export default function ContactSection() {
             <Terminal size={22} className="text-text-tertiary" />
           </div>
 
-          <span className="font-mono text-[11px] tracking-[0.2em] text-text-tertiary uppercase block mb-6">
+          <span className="font-vt text-[16px] text-text-tertiary uppercase block mb-6">
             {"// INITIALISER_CONTACT"}
           </span>
 
@@ -40,13 +40,18 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-geist font-bold text-text mx-auto"
-            style={{ fontSize: "clamp(36px, 4.5vw, 56px)", letterSpacing: "-0.025em", maxWidth: "700px", textWrap: "balance" }}
+            className="font-grotesk font-bold text-text mx-auto"
+            style={{
+              fontSize: "clamp(36px, 4.5vw, 56px)",
+              letterSpacing: "-0.025em",
+              maxWidth: "700px",
+              textWrap: "balance",
+            }}
           >
             Prêt à sécuriser votre infrastructure ?
           </motion.h2>
 
-          <p className="mt-6 font-geist text-base text-text-secondary leading-relaxed max-w-lg mx-auto">
+          <p className="mt-6 font-grotesk text-[15px] text-text-secondary leading-[1.7] max-w-lg mx-auto">
             Notre équipe d&apos;ingénieurs configure votre environnement en moins de 24
             heures. Pas de rendez-vous commercial, pas d&apos;attente.
           </p>
@@ -72,7 +77,7 @@ export default function ContactSection() {
             </a>
           </div>
 
-          <p className="mt-8 font-mono text-[11px] tracking-[0.05em] text-text-muted">
+          <p className="mt-8 font-vt text-[16px] text-text-muted">
             Déploiement moyen : 18h · Satisfaction client : 98.4% · Support 24/7
           </p>
 

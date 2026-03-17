@@ -4,11 +4,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const CERTIFICATIONS = [
-  { name: "ISO 27001", desc: "Système de management de la sécurité" },
-  { name: "RGPD", desc: "Conformité protection des données" },
-  { name: "SOC 2", desc: "Contrôles de sécurité audités" },
+  { name: "ISO 27001", desc: "Management sécurité" },
+  { name: "RGPD", desc: "Protection des données" },
+  { name: "SOC 2", desc: "Contrôles audités" },
   { name: "SecNumCloud", desc: "Qualification ANSSI" },
-  { name: "HDS", desc: "Hébergement données de santé" },
+  { name: "HDS", desc: "Données de santé" },
   { name: "CYBER+", desc: "Label France Num" },
 ];
 
@@ -28,17 +28,17 @@ export default function TrustSignals() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-12">
           <div>
-            <span className="font-mono text-[11px] tracking-[0.2em] text-text-tertiary uppercase block mb-2">
+            <span className="font-vt text-[16px] text-text-tertiary uppercase block mb-2">
               {"// CERTIFICATIONS & NORMES"}
             </span>
-            <p className="font-geist text-sm text-text-secondary max-w-md">
+            <p className="font-grotesk text-[14px] text-text-secondary max-w-md">
               Toutes nos opérations sont auditées et certifiées par des
               organismes indépendants.
             </p>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-cyber-green animate-pulse" />
-            <span className="font-mono text-[11px] tracking-[0.1em] text-text-tertiary">
+            <span className="font-vt text-[14px] text-text-tertiary">
               TOUS AUDITS À JOUR — 2026
             </span>
           </div>
@@ -56,10 +56,10 @@ export default function TrustSignals() {
               transition={{ delay: i * 0.08, duration: 0.4 }}
               className="bg-card flex flex-col items-center justify-center py-8 px-4 gap-2 hover:bg-surface-light transition-colors duration-300"
             >
-              <span className="font-mono text-sm font-bold text-text-secondary/70 tracking-[0.1em]">
+              <span className="font-vt text-[18px] text-text-secondary/70">
                 {cert.name}
               </span>
-              <span className="font-mono text-[9px] tracking-[0.1em] text-text-tertiary/50 uppercase text-center">
+              <span className="font-vt text-[14px] text-text-tertiary/50 uppercase text-center">
                 {cert.desc}
               </span>
             </motion.div>

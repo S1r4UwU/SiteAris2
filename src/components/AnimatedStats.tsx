@@ -54,7 +54,7 @@ function AnimatedNumber({
           </span>
         )}
       </div>
-      <span className="font-mono text-[11px] tracking-[0.12em] text-text-muted uppercase text-center">
+      <span className="font-vt text-[16px] text-text-muted uppercase text-center">
         {label}
       </span>
     </div>

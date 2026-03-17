@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import GlobalGrid from "@/components/GlobalGrid";
+import FilmGrain from "@/components/FilmGrain";
+import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   title: "ARIS — Cybersécurité Plug & Play pour TPE/PME",
@@ -26,6 +28,8 @@ export default function RootLayout({
     <html lang="fr">
       <body className="antialiased">
         <GlobalGrid />
+        <FilmGrain />
+        <CustomCursor />
         {children}
       </body>
     </html>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=VT323&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 @theme {
   --color-bg: #050505;
@@ -15,8 +16,9 @@
   --color-cyber-green: #00FF41;
   --color-cyber-cyan: #00FFFF;
 
-  --font-geist: "Geist", "Inter", "SF Pro Display", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Space Mono", "Courier New", monospace;
+  --font-grotesk: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-vt: "VT323", monospace;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
 }
 
 @layer base {
@@ -24,6 +26,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    cursor: none !important;
   }
 
   html {
@@ -33,7 +36,7 @@
   body {
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: var(--font-geist);
+    font-family: var(--font-grotesk);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -76,67 +79,28 @@
   to { transform: translateX(-50%); }
 }
 
-.bento-grid {
-  display: grid;
-  gap: 3px;
-  grid-template-columns: 1fr;
+@keyframes ping-ripple {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
 }
 
-@media (min-width: 768px) {
-  .bento-grid {
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "ar ae rg"
-      "ar sc sc"
-      "bt bt bt";
-  }
+@keyframes marquee-slow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-@font-face {
-  font-family: "Geist";
-  src: url("https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-@font-face {
-  font-family: "Geist";
-  src: url("https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Geist";
-  src: url("https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Geist";
-  src: url("https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @font-face {
   font-family: "JetBrains Mono";
   src: url("https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.0/files/jetbrains-mono-latin-400-normal.woff2") format("woff2");
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url("https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.0/files/jetbrains-mono-latin-500-normal.woff2") format("woff2");
-  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }

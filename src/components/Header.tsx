@@ -33,7 +33,7 @@ export default function Header() {
       style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16">
-        <a href="#" className="font-mono text-lg font-bold tracking-[0.3em] text-text">
+        <a href="#" className="font-vt text-[24px] text-text">
           ARIS<span className="text-cyber-green">_</span>
         </a>
 
@@ -42,7 +42,7 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="font-mono text-xs tracking-[0.15em] text-text-tertiary px-4 py-2 transition-colors duration-200 hover:text-text"
+              className="font-vt text-[16px] text-text-tertiary px-4 py-2 transition-colors duration-200 hover:text-text"
             >
               {item.label}
             </a>
@@ -81,7 +81,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="font-mono text-sm tracking-[0.15em] text-text-tertiary hover:text-text transition-colors duration-200"
+                  className="font-vt text-[18px] text-text-tertiary hover:text-text transition-colors duration-200"
                 >
                   {item.label}
                 </a>
