@@ -2,6 +2,30 @@
 
 import { useState, useEffect, useRef } from "react";
 
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return reduced;
+}
+
+function usePointerFine() {
+  const [fine, setFine] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: fine)");
+    setFine(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setFine(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return fine;
+}
+
 export default function CustomCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
   const [hovering, setHovering] = useState(false);
@@ -10,11 +34,18 @@ export default function CustomCursor() {
   const rafRef = useRef<number>(0);
   const targetRef = useRef({ x: -100, y: -100 });
 
+  const reducedMotion = usePrefersReducedMotion();
+  const pointerFine = usePointerFine();
+
+  const shouldRender = pointerFine && !isTouch && !reducedMotion;
+
   useEffect(() => {
     if ("ontouchstart" in window) {
       setIsTouch(true);
       return;
     }
+
+    if (!shouldRender) return;
 
     document.documentElement.style.cursor = "none";
     const styleEl = document.createElement("style");
@@ -60,9 +91,9 @@ export default function CustomCursor() {
       document.documentElement.style.cursor = "";
       styleEl.remove();
     };
-  }, [visible]);
+  }, [visible, shouldRender]);
 
-  if (isTouch || !visible) return null;
+  if (!shouldRender || !visible) return null;
 
   const size = hovering ? 30 : 12;
 

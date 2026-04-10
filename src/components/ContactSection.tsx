@@ -56,17 +56,24 @@ export default function ContactSection() {
             premier diagnostic. Pas de rendez-vous commercial, pas d&apos;attente.
           </p>
 
-          <div className="mt-10 flex justify-center">
-            <a
-              href="mailto:contact@prisme-one.com"
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => window.dispatchEvent(new Event("open-wizard"))}
               className="group inline-flex items-center justify-center gap-3 font-mono text-[11px] tracking-[0.15em] uppercase px-8 py-4 bg-text text-bg hover:bg-transparent hover:text-text transition-all duration-200"
               style={{ border: "1px solid #EDEDED" }}
             >
-              OUVRIR UN TICKET
+              DIAGNOSTIC RAPIDE
               <ArrowRight
                 size={14}
                 className="transition-transform duration-200 group-hover:translate-x-1"
               />
+            </button>
+            <a
+              href="mailto:contact@prisme-one.com"
+              className="inline-flex items-center justify-center gap-3 font-mono text-[11px] tracking-[0.15em] uppercase px-8 py-4 text-text-secondary hover:text-text transition-all duration-200"
+              style={{ border: "1px solid rgba(255,255,255,0.2)" }}
+            >
+              ÉCRIRE DIRECTEMENT
             </a>
           </div>
 

@@ -5,12 +5,25 @@ import { useEffect, useRef, useState } from "react";
 export default function FilmGrain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isTouch, setIsTouch] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     if ("ontouchstart" in window) {
       setIsTouch(true);
       return;
     }
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mq.matches) {
+      setReducedMotion(true);
+      return;
+    }
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    if (isTouch || reducedMotion) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -51,9 +64,9 @@ export default function FilmGrain() {
       cancelAnimationFrame(animFrame);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [isTouch, reducedMotion]);
 
-  if (isTouch) return null;
+  if (isTouch || reducedMotion) return null;
 
   return (
     <canvas

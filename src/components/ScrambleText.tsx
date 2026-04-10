@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
 
@@ -26,15 +26,21 @@ export default function ScrambleText({
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [display, setDisplay] = useState("");
   const [started, setStarted] = useState(false);
+  const shouldReduce = useReducedMotion();
 
   useEffect(() => {
     if (!isInView) return;
+    if (shouldReduce) {
+      setDisplay(text);
+      setStarted(true);
+      return;
+    }
     const timer = setTimeout(() => setStarted(true), delay);
     return () => clearTimeout(timer);
-  }, [isInView, delay]);
+  }, [isInView, delay, shouldReduce, text]);
 
   useEffect(() => {
-    if (!started) return;
+    if (!started || shouldReduce) return;
 
     let frame = 0;
     const totalFrames = text.length;
@@ -58,7 +64,7 @@ export default function ScrambleText({
     }, speed);
 
     return () => clearInterval(interval);
-  }, [started, text, speed]);
+  }, [started, text, speed, shouldReduce]);
 
   return (
     <Tag ref={ref as React.Ref<never>} className={className} style={style}>
@@ -67,10 +73,6 @@ export default function ScrambleText({
   );
 }
 
-/**
- * Inline word scramble — 3-4 fast iterations then reveal.
- * Total duration ~0.8s. Used for single keywords within a sentence.
- */
 interface WordScrambleProps {
   word: string;
   className?: string;
@@ -88,9 +90,15 @@ export function WordScramble({
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [display, setDisplay] = useState(word);
   const [done, setDone] = useState(false);
+  const shouldReduce = useReducedMotion();
 
   useEffect(() => {
     if (!isInView || done) return;
+    if (shouldReduce) {
+      setDisplay(word);
+      setDone(true);
+      return;
+    }
 
     const timer = setTimeout(() => {
       let frame = 0;
@@ -120,7 +128,7 @@ export function WordScramble({
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [isInView, done, word, delay, iterations]);
+  }, [isInView, done, word, delay, iterations, shouldReduce]);
 
   return (
     <span ref={ref} className={className}>

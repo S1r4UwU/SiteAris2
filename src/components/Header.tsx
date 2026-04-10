@@ -50,13 +50,13 @@ export default function Header() {
               {item.label}
             </a>
           ))}
-          <a
-            href="#offres"
+          <button
+            onClick={() => window.dispatchEvent(new Event("open-wizard"))}
             className="ml-4 font-mono text-[11px] tracking-[0.15em] uppercase px-5 py-2.5 bg-text text-bg hover:bg-transparent hover:text-text transition-all duration-200"
             style={{ border: "1px solid #EDEDED" }}
           >
             DÉPLOYER
-          </a>
+          </button>
         </nav>
 
         <button
@@ -89,14 +89,13 @@ export default function Header() {
                   {item.label}
                 </a>
               ))}
-              <a
-                href="#offres"
-                onClick={() => setMobileOpen(false)}
+              <button
+                onClick={() => { setMobileOpen(false); window.dispatchEvent(new Event("open-wizard")); }}
                 className="mt-2 font-mono text-[11px] tracking-[0.15em] uppercase px-5 py-3 bg-text text-bg text-center hover:bg-transparent hover:text-text transition-all duration-200"
                 style={{ border: "1px solid #EDEDED" }}
               >
                 DÉPLOYER
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

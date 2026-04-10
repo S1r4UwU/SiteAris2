@@ -124,8 +124,8 @@ export default function PackCard({ pack }: { pack: Pack }) {
             {pack.period}
           </span>
         </div>
-        <a
-          href="#contact"
+        <button
+          onClick={() => window.dispatchEvent(new Event("open-wizard"))}
           className="deploy-btn group/btn inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.1em] uppercase shrink-0 bg-transparent text-text hover:text-white transition-all duration-200"
           style={{ border: "1px solid rgba(255,255,255,0.25)", padding: "10px 20px" }}
           onMouseEnter={(e) => {
@@ -143,7 +143,7 @@ export default function PackCard({ pack }: { pack: Pack }) {
           </span>
           DÉPLOYER
           <ArrowRight size={12} className="transition-transform duration-200 group-hover/btn:translate-x-0.5" />
-        </a>
+        </button>
       </div>
     </motion.div>
   );
