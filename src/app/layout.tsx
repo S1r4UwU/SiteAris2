@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import GlobalGrid from "@/components/GlobalGrid";
 import FilmGrain from "@/components/FilmGrain";
-import CustomCursor from "@/components/CustomCursor";
 
 const BASE_URL = "https://prisme-one.com";
 
@@ -82,7 +81,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <GlobalGrid />
-        <CustomCursor />
         {children}
         <FilmGrain />
       </body>

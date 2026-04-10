@@ -79,7 +79,7 @@ export default function FilmGrain() {
         height: "100%",
         zIndex: 9999,
         mixBlendMode: "overlay",
-        opacity: 0.035,
+        opacity: 0.02,
       }}
     />
   );

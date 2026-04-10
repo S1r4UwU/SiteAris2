@@ -1,13 +1,15 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import {
   ShieldAlert,
   ScanSearch,
   FileWarning,
   ServerCog,
   Lock,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import PackCard from "./PackCard";
 import type { Pack } from "./PackCard";
@@ -116,25 +118,45 @@ export default function BentoGrid() {
   const ref = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateArrows = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < max - 10);
+  }, []);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const onScroll = () => {
-      const max = el.scrollWidth - el.clientWidth;
-      setScrollProgress(max > 0 ? el.scrollLeft / max : 0);
+    el.addEventListener("scroll", updateArrows, { passive: true });
+    updateArrows();
+    window.addEventListener("resize", updateArrows);
+    return () => {
+      el.removeEventListener("scroll", updateArrows);
+      window.removeEventListener("resize", updateArrows);
     };
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [updateArrows]);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = 400;
+    el.scrollBy({
+      left: dir === "left" ? -cardWidth : cardWidth,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <section id="offres" className="relative pt-8 md:pt-12 pb-24 md:pb-32">
       <div className="mx-auto max-w-7xl px-6">
         <div ref={ref} className="mb-12 max-w-2xl">
-          <span className="font-vt text-[16px] text-text-tertiary uppercase block mb-4">
-            {"// CATALOGUE_SERVICES"}
+          <span className="font-grotesk text-[11px] tracking-[0.12em] text-text-tertiary uppercase block mb-4">
+            Catalogue services
           </span>
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
@@ -150,34 +172,51 @@ export default function BentoGrid() {
             de risque. Satisfait ou remboursé sous 7 jours.
           </p>
         </div>
+
+        <div className="flex items-center gap-2 mb-6">
+          <button
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            className="w-10 h-10 flex items-center justify-center transition-all duration-200 disabled:opacity-20"
+            style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+            aria-label="Pack précédent"
+          >
+            <ChevronLeft size={18} className="text-text" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            className="w-10 h-10 flex items-center justify-center transition-all duration-200 disabled:opacity-20"
+            style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+            aria-label="Pack suivant"
+          >
+            <ChevronRight size={18} className="text-text" />
+          </button>
+          <span className="ml-3 font-grotesk text-[12px] text-text-muted">
+            {PACKS.length} packs disponibles
+          </span>
+        </div>
       </div>
 
-      {/* Horizontal scroll container */}
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto hide-scrollbar px-6 md:px-[calc((100vw-1280px)/2+24px)] pb-4"
-        style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+        className="flex gap-4 overflow-x-auto hide-scrollbar px-6 pb-4"
+        style={{
+          scrollSnapType: "x proximity",
+          WebkitOverflowScrolling: "touch",
+        }}
       >
         {PACKS.map((pack) => (
           <PackCard
             key={pack.id}
             pack={pack}
-            onShowDetails={(id) => window.dispatchEvent(new CustomEvent("open-drawer", { detail: id }))}
+            onShowDetails={(id) =>
+              window.dispatchEvent(
+                new CustomEvent("open-drawer", { detail: id })
+              )
+            }
           />
         ))}
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="mx-auto max-w-7xl px-6 mt-6 flex items-center justify-center gap-4">
-        <span className="font-vt text-[14px] text-text-muted">
-          ← GLISSER POUR VOIR TOUS LES PACKS →
-        </span>
-      </div>
-      <div className="mx-auto max-w-[200px] mt-3 h-[2px] bg-white/5 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-white/20 rounded-full transition-all duration-150"
-          style={{ width: `${20 + scrollProgress * 80}%` }}
-        />
       </div>
     </section>
   );

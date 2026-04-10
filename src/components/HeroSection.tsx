@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { WordScramble } from "./ScrambleText";
 import GridBackground from "./GridBackground";
-import ThreatMonitor from "./ThreatMonitor";
 import AnimatedStats from "./AnimatedStats";
 
 export default function HeroSection() {
@@ -12,17 +11,8 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-start overflow-hidden">
       <GridBackground />
 
-      <div
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,255,70,0.07) 0%, transparent 70%)",
-        }}
-      />
-
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pt-36 md:pt-44 pb-10">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-          {/* Left column — Title + CTA */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -37,7 +27,7 @@ export default function HeroSection() {
               style={{ border: "1px solid rgba(255,255,255,0.08)" }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-cyber-green animate-pulse" />
-              <span className="font-vt text-[16px] text-text-tertiary uppercase">
+              <span className="font-grotesk text-[12px] tracking-[0.08em] text-text-tertiary uppercase">
                 Systèmes opérationnels — France
               </span>
             </motion.div>
@@ -98,60 +88,36 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right column — Floating elements (desktop only) */}
-          <div className="hidden md:flex flex-col gap-6 relative w-[280px] shrink-0 pt-8">
+          <div className="hidden md:flex flex-col gap-6 relative w-[240px] shrink-0 pt-8">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.3, duration: 0.5 }}
-              className="w-[220px] p-4"
+              className="p-5"
               style={{
                 background: "rgba(255,255,255,0.03)",
                 border: "1px solid rgba(255,255,255,0.1)",
               }}
             >
-              <span className="font-vt text-[16px] text-text-tertiary block mb-2">
-                STATUT SYSTÈME
+              <span className="font-grotesk text-[11px] tracking-[0.1em] text-text-tertiary block mb-3 uppercase">
+                Statut système
               </span>
-              <div className="font-vt text-[16px] text-cyber-green mb-1">
-                {"██████████"} 100%
+              <div className="flex items-center gap-2 mb-2">
+                <span
+                  className="w-2 h-2 rounded-full bg-cyber-green"
+                  style={{ animation: "pulse-dot 2s ease-in-out infinite" }}
+                />
+                <span className="font-grotesk text-[13px] text-text font-medium">
+                  Opérationnel
+                </span>
               </div>
-              <div className="font-vt text-[16px] text-text-muted">
-                MODULES : ACTIFS
+              <div className="font-grotesk text-[12px] text-text-muted mt-1">
+                Tous les modules actifs
               </div>
-              <div className="font-vt text-[16px] text-text-muted">
-                DERNIÈRE MAJ : 2s
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.6, duration: 0.5 }}
-              className="inline-flex items-center gap-2 self-end mr-4"
-            >
-              <span
-                className="w-2 h-2 rounded-full bg-cyber-green"
-                style={{ animation: "pulse-dot 2s ease-in-out infinite" }}
-              />
-              <span className="font-vt text-[16px] text-cyber-green">
-                OPÉRATIONNEL
-              </span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.25 }}
-              transition={{ delay: 2, duration: 0.5 }}
-              className="mt-auto font-mono text-[11px] text-text-tertiary"
-            >
-              $ prisme scan --target=network --deep
-              <span style={{ animation: "blink-cursor 1s step-end infinite" }}>▋</span>
             </motion.div>
           </div>
         </div>
 
-        <ThreatMonitor />
         <AnimatedStats />
       </div>
 

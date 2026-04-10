@@ -27,21 +27,24 @@ export default function ArchitectureSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section
-      ref={ref}
-      className="relative py-24 md:py-32"
-      style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-    >
+    <section ref={ref} className="section-light relative py-24 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
-        <span className="font-vt text-[16px] text-cyber-green/60 uppercase block mb-4">
-          {"// ARCHITECTURE_PROTECTION"}
+        <span
+          className="font-grotesk text-[11px] tracking-[0.12em] uppercase block mb-4"
+          style={{ color: "#999" }}
+        >
+          Architecture de protection
         </span>
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-grotesk font-bold text-text mb-16"
-          style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.04em" }}
+          className="font-grotesk font-bold mb-16"
+          style={{
+            fontSize: "clamp(28px, 3.5vw, 44px)",
+            letterSpacing: "-0.04em",
+            color: "#0A0A0A",
+          }}
         >
           Votre infrastructure, protégée en profondeur.
         </motion.h2>
@@ -60,11 +63,14 @@ export default function ArchitectureSection() {
             {INFRA_NODES.map((node, i) => (
               <g key={`conn-infra-${i}`}>
                 <line
-                  x1={node.x} y1={INFRA_Y + 45}
-                  x2={SHIELD_CX} y2={SHIELD_Y - 10}
-                  stroke="rgba(255,255,255,0.08)" strokeWidth="1"
+                  x1={node.x}
+                  y1={INFRA_Y + 45}
+                  x2={SHIELD_CX}
+                  y2={SHIELD_Y - 10}
+                  stroke="rgba(0,0,0,0.1)"
+                  strokeWidth="1"
                 />
-                <circle r="3" fill="rgba(0,255,65,0.6)">
+                <circle r="3" fill="rgba(0,160,50,0.6)">
                   <animateMotion
                     dur={`${1.8 + i * 0.4}s`}
                     repeatCount="indefinite"
@@ -77,11 +83,14 @@ export default function ArchitectureSection() {
             {THREAT_NODES.map((node, i) => (
               <g key={`conn-threat-${i}`}>
                 <line
-                  x1={SHIELD_CX} y1={SHIELD_Y + 50}
-                  x2={node.x} y2={THREAT_Y - 5}
-                  stroke="rgba(255,95,87,0.08)" strokeWidth="1"
+                  x1={SHIELD_CX}
+                  y1={SHIELD_Y + 50}
+                  x2={node.x}
+                  y2={THREAT_Y - 5}
+                  stroke="rgba(200,60,60,0.1)"
+                  strokeWidth="1"
                 />
-                <circle r="3" fill="rgba(255,95,87,0.6)">
+                <circle r="3" fill="rgba(200,60,60,0.6)">
                   <animateMotion
                     dur={`${2 + i * 0.3}s`}
                     repeatCount="indefinite"
@@ -91,49 +100,132 @@ export default function ArchitectureSection() {
               </g>
             ))}
 
-            <text x="400" y="20" textAnchor="middle" fill="#555555" fontSize="9" fontFamily="'VT323', monospace" letterSpacing="0.15em">
+            <text
+              x="400"
+              y="20"
+              textAnchor="middle"
+              fill="#999"
+              fontSize="9"
+              fontFamily="'Space Grotesk', sans-serif"
+              letterSpacing="0.15em"
+            >
               VOTRE INFRASTRUCTURE
             </text>
 
             {INFRA_NODES.map((node, i) => (
               <g key={`infra-${i}`}>
-                <rect x={node.x - 20} y={INFRA_Y - 5} width="40" height="40" fill="none" stroke="#333333" strokeWidth="1" />
-                <foreignObject x={node.x - 10} y={INFRA_Y + 3} width="20" height="20">
+                <rect
+                  x={node.x - 20}
+                  y={INFRA_Y - 5}
+                  width="40"
+                  height="40"
+                  fill="none"
+                  stroke="rgba(0,0,0,0.15)"
+                  strokeWidth="1"
+                />
+                <foreignObject
+                  x={node.x - 10}
+                  y={INFRA_Y + 3}
+                  width="20"
+                  height="20"
+                >
                   <div className="flex items-center justify-center w-5 h-5">
-                    <node.icon size={14} color="#888888" />
+                    <node.icon size={14} color="#555" />
                   </div>
                 </foreignObject>
-                <text x={node.x} y={INFRA_Y + 55} textAnchor="middle" fill="#888888" fontSize="10" fontFamily="'VT323', monospace">
+                <text
+                  x={node.x}
+                  y={INFRA_Y + 55}
+                  textAnchor="middle"
+                  fill="#555"
+                  fontSize="10"
+                  fontFamily="'Space Grotesk', sans-serif"
+                >
                   {node.label}
                 </text>
               </g>
             ))}
 
             <rect
-              x={SHIELD_CX - 160} y={SHIELD_Y - 25}
-              width="320" height="65" rx="0"
-              fill="rgba(0,255,65,0.03)" stroke="rgba(0,255,65,0.2)" strokeWidth="1"
+              x={SHIELD_CX - 160}
+              y={SHIELD_Y - 25}
+              width="320"
+              height="65"
+              rx="0"
+              fill="rgba(0,160,50,0.06)"
+              stroke="rgba(0,160,50,0.3)"
+              strokeWidth="1"
             >
-              <animate attributeName="stroke-opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite" />
+              <animate
+                attributeName="stroke-opacity"
+                values="0.3;0.5;0.3"
+                dur="3s"
+                repeatCount="indefinite"
+              />
             </rect>
-            <text x={SHIELD_CX} y={SHIELD_Y + 2} textAnchor="middle" fill="#00FF41" fontSize="14" fontFamily="'VT323', monospace" fontWeight="700">
+            <text
+              x={SHIELD_CX}
+              y={SHIELD_Y + 2}
+              textAnchor="middle"
+              fill="#0A7A2E"
+              fontSize="14"
+              fontFamily="'Space Grotesk', sans-serif"
+              fontWeight="700"
+            >
               PRISME SHIELD
             </text>
-            <text x={SHIELD_CX} y={SHIELD_Y + 22} textAnchor="middle" fill="#555555" fontSize="10" fontFamily="'VT323', monospace">
+            <text
+              x={SHIELD_CX}
+              y={SHIELD_Y + 22}
+              textAnchor="middle"
+              fill="#888"
+              fontSize="10"
+              fontFamily="'Space Grotesk', sans-serif"
+            >
               EDR · FIREWALL · SIEM · SOC MANAGÉ
             </text>
 
-            <text x="400" y={THREAT_Y - 20} textAnchor="middle" fill="#555555" fontSize="9" fontFamily="'VT323', monospace" letterSpacing="0.15em">
+            <text
+              x="400"
+              y={THREAT_Y - 20}
+              textAnchor="middle"
+              fill="#999"
+              fontSize="9"
+              fontFamily="'Space Grotesk', sans-serif"
+              letterSpacing="0.15em"
+            >
               MENACES NEUTRALISÉES
             </text>
 
             {THREAT_NODES.map((node, i) => (
               <g key={`threat-${i}`}>
-                <rect x={node.x - 50} y={THREAT_Y} width="100" height="34" fill="rgba(255,95,87,0.05)" stroke="rgba(255,95,87,0.2)" strokeWidth="1" />
-                <text x={node.x} y={THREAT_Y + 20} textAnchor="middle" fill="#4A2020" fontSize="10" fontFamily="'VT323', monospace">
+                <rect
+                  x={node.x - 50}
+                  y={THREAT_Y}
+                  width="100"
+                  height="34"
+                  fill="rgba(200,60,60,0.06)"
+                  stroke="rgba(200,60,60,0.2)"
+                  strokeWidth="1"
+                />
+                <text
+                  x={node.x}
+                  y={THREAT_Y + 20}
+                  textAnchor="middle"
+                  fill="#8B4444"
+                  fontSize="10"
+                  fontFamily="'Space Grotesk', sans-serif"
+                >
                   {node.label}
                 </text>
-                <text x={node.x + 38} y={THREAT_Y + 14} textAnchor="middle" fill="rgba(255,95,87,0.4)" fontSize="12" fontFamily="monospace">
+                <text
+                  x={node.x + 38}
+                  y={THREAT_Y + 14}
+                  textAnchor="middle"
+                  fill="rgba(200,60,60,0.4)"
+                  fontSize="12"
+                  fontFamily="monospace"
+                >
                   ✕
                 </text>
               </g>

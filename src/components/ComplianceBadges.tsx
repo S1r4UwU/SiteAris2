@@ -14,10 +14,13 @@ export default function ComplianceBadges() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section ref={ref} className="relative py-10 md:py-14">
+    <section ref={ref} className="section-light relative py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
-        <span className="font-vt text-[16px] text-text-muted uppercase block mb-6">
-          {"// FRAMEWORKS & MÉTHODOLOGIES APPLIQUÉS"}
+        <span
+          className="font-grotesk text-[11px] tracking-[0.12em] uppercase block mb-6"
+          style={{ color: "#999" }}
+        >
+          Frameworks & méthodologies appliqués
         </span>
 
         <div className="flex flex-wrap gap-3">
@@ -31,13 +34,15 @@ export default function ComplianceBadges() {
                 duration: 0.35,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className="font-vt text-[16px] text-text-tertiary px-5 py-3 transition-all duration-200 hover:text-[#AAAAAA]"
-              style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+              className="font-grotesk text-[14px] font-medium px-5 py-3 transition-all duration-200"
+              style={{ color: "#333", border: "1px solid rgba(0,0,0,0.12)" }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.25)";
+                (e.currentTarget as HTMLElement).style.borderColor =
+                  "rgba(0,0,0,0.3)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
+                (e.currentTarget as HTMLElement).style.borderColor =
+                  "rgba(0,0,0,0.12)";
               }}
             >
               {badge}

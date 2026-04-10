@@ -27,8 +27,8 @@ export default function Marquee() {
       }}
     >
       <span
-        className="block text-center font-vt text-[14px] uppercase mb-6"
-        style={{ color: "#333333", letterSpacing: "0.2em" }}
+        className="block text-center font-grotesk text-[11px] tracking-[0.12em] uppercase mb-6"
+        style={{ color: "#333333" }}
       >
         STACK & OUTILS
       </span>
@@ -41,7 +41,7 @@ export default function Marquee() {
           {list.map((name, i) => (
             <span
               key={`${name}-${i}`}
-              className="font-vt text-[18px] shrink-0 transition-opacity duration-300 select-none"
+              className="font-grotesk text-[14px] shrink-0 transition-opacity duration-300 select-none"
               style={{ color: "rgba(255,255,255,0.2)" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)";

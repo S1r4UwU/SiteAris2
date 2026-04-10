@@ -52,8 +52,8 @@ export default function InfraSection() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-2xl">
-          <span className="font-vt text-[16px] text-text-tertiary uppercase block mb-4">
-            {"// NOTRE APPROCHE"}
+          <span className="font-grotesk text-[11px] tracking-[0.12em] text-text-tertiary uppercase block mb-4">
+            Notre approche
           </span>
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
@@ -93,11 +93,11 @@ export default function InfraSection() {
                 >
                   <item.icon size={18} strokeWidth={1.5} />
                 </div>
-                <span className="font-vt text-[14px] text-text-tertiary/60 uppercase">
+                <span className="font-grotesk text-[11px] tracking-[0.08em] text-text-tertiary/60 uppercase">
                   {item.tag}
                 </span>
               </div>
-              <h3 className="font-vt text-[18px] text-text">
+              <h3 className="font-grotesk text-[14px] font-semibold text-text">
                 {item.title}
               </h3>
               <p className="font-grotesk text-[14px] text-text-secondary leading-[1.7]">

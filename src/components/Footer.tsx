@@ -24,7 +24,7 @@ export default function Footer() {
           <span className="font-vt text-[64px] text-text leading-none">
             PRISME<span className="text-cyber-green">_</span>
           </span>
-          <span className="font-vt text-[18px] text-white/20 ml-3">v1.0</span>
+          <span className="font-grotesk text-[13px] text-white/20 ml-3">v1.0</span>
         </div>
 
         {/* Marquee ticker */}
@@ -33,10 +33,10 @@ export default function Footer() {
             className="flex whitespace-nowrap"
             style={{ animation: "marquee-slow 60s linear infinite" }}
           >
-            <span className="font-vt text-[16px] text-[#2A2A2A] shrink-0">
+            <span className="font-grotesk text-[12px] tracking-[0.05em] text-[#2A2A2A] shrink-0">
               {MARQUEE_TEXT}&nbsp;·&nbsp;
             </span>
-            <span className="font-vt text-[16px] text-[#2A2A2A] shrink-0">
+            <span className="font-grotesk text-[12px] tracking-[0.05em] text-[#2A2A2A] shrink-0">
               {MARQUEE_TEXT}&nbsp;·&nbsp;
             </span>
           </div>
@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <span className="font-vt text-[14px] text-text-tertiary/60 uppercase block mb-4">
+            <span className="font-grotesk text-[11px] tracking-[0.1em] text-text-tertiary/60 uppercase block mb-4">
               SERVICES
             </span>
             <ul className="space-y-2">
@@ -77,7 +77,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <span className="font-vt text-[14px] text-text-tertiary/60 uppercase block mb-4">
+            <span className="font-grotesk text-[11px] tracking-[0.1em] text-text-tertiary/60 uppercase block mb-4">
               ENTREPRISE
             </span>
             <ul className="space-y-2">
@@ -101,7 +101,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <span className="font-vt text-[14px] text-text-tertiary/60 uppercase block mb-4">
+            <span className="font-grotesk text-[11px] tracking-[0.1em] text-text-tertiary/60 uppercase block mb-4">
               CONTACT
             </span>
             <ul className="space-y-2">
@@ -125,12 +125,12 @@ export default function Footer() {
           className="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
           style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
         >
-          <span className="font-vt text-[14px] text-text-tertiary/30">
+          <span className="font-grotesk text-[11px] tracking-[0.05em] text-text-tertiary/30">
             © {year} PRISME-ONE. TOUS DROITS RÉSERVÉS.
           </span>
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-cyber-green animate-pulse" />
-            <span className="font-vt text-[14px] text-text-tertiary/30">
+            <span className="font-grotesk text-[11px] tracking-[0.05em] text-text-tertiary/30">
               SYSTÈMES OPÉRATIONNELS
             </span>
           </div>

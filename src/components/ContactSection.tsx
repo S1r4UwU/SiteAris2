@@ -32,8 +32,8 @@ export default function ContactSection() {
             <Terminal size={22} className="text-text-tertiary" />
           </div>
 
-          <span className="font-vt text-[16px] text-text-tertiary uppercase block mb-6">
-            {"// INITIALISER_CONTACT"}
+          <span className="font-grotesk text-[11px] tracking-[0.12em] text-text-tertiary uppercase block mb-6">
+            Initialiser contact
           </span>
 
           <motion.h2
@@ -78,7 +78,7 @@ export default function ContactSection() {
           </div>
 
           <div className="mt-10 font-mono text-[11px] text-text-tertiary/50 tracking-[0.1em]">
-            <span className="text-cyber-green/50">$</span> ssh
+            <span className="text-text-muted">$</span> ssh
             contact@prisme-one.com
           </div>
         </motion.div>

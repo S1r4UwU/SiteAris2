@@ -31,7 +31,7 @@ export default function Header() {
         backdropFilter: scrolled ? "blur(12px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
         borderBottom: scrolled
-          ? "1px solid rgba(0,255,70,0.15)"
+          ? "1px solid rgba(255,255,255,0.08)"
           : "1px solid rgba(255,255,255,0.06)",
       }}
     >
@@ -45,7 +45,7 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="font-vt text-[16px] text-text-tertiary px-4 py-2 transition-colors duration-200 hover:text-text"
+              className="font-grotesk text-[13px] tracking-[0.05em] text-text-tertiary px-4 py-2 transition-colors duration-200 hover:text-text uppercase"
             >
               {item.label}
             </a>
@@ -84,7 +84,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="font-vt text-[18px] text-text-tertiary hover:text-text transition-colors duration-200"
+                  className="font-grotesk text-[15px] text-text-tertiary hover:text-text transition-colors duration-200"
                 >
                   {item.label}
                 </a>
