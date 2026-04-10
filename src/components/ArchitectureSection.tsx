@@ -120,7 +120,7 @@ export default function ArchitectureSection() {
               PRISME SHIELD
             </text>
             <text x={SHIELD_CX} y={SHIELD_Y + 22} textAnchor="middle" fill="#555555" fontSize="10" fontFamily="'VT323', monospace">
-              EDR · FIREWALL · SIEM · SOC 24/7
+              EDR · FIREWALL · SIEM · SOC MANAGÉ
             </text>
 
             <text x="400" y={THREAT_Y - 20} textAnchor="middle" fill="#555555" fontSize="9" fontFamily="'VT323', monospace" letterSpacing="0.15em">

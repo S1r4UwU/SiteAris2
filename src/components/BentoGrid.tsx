@@ -24,15 +24,15 @@ const PACKS: Pack[] = [
     metrics: [
       { label: "Déploiement", value: "24H" },
       { label: "Niveau menace", value: "ÉLEVÉ" },
-      { label: "Endpoints", value: "∞" },
-      { label: "SLA", value: "99.9%" },
+      { label: "Postes inclus", value: "≤ 50" },
+      { label: "Réactivité", value: "< 4H" },
     ],
     features: [
       "EDR/XDR managé sur tous les postes et serveurs",
       "Isolation automatique des machines compromises",
-      "Analyse comportementale IA en temps réel",
+      "Analyse comportementale en temps réel",
       "Rapport d'incident mensuel détaillé",
-      "Hotline SOC 24/7 dédiée",
+      "Support ouvré + astreinte critique 7j/7",
     ],
   },
   {
@@ -89,7 +89,7 @@ const PACKS: Pack[] = [
       "Threat Intelligence feeds intégrés",
       "Réponse à incident automatisée (SOAR)",
       "Tableau de bord temps réel",
-      "Analyste dédié niveau 2/3",
+      "1 interlocuteur unique, opérateur certifié",
     ],
   },
   {
@@ -147,7 +147,7 @@ export default function BentoGrid() {
           </motion.h2>
           <p className="mt-4 font-grotesk text-[15px] text-text-secondary leading-[1.7] max-w-lg">
             Chaque pack est un module autonome. Combinez-les selon votre niveau
-            de risque. Déploiement garanti ou remboursé.
+            de risque. Satisfait ou remboursé sous 7 jours.
           </p>
         </div>
       </div>

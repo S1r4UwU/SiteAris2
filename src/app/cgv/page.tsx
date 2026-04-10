@@ -32,7 +32,8 @@ export default function CGV() {
             <p>
               Les présentes conditions générales régissent les prestations de services
               en cybersécurité et informatique proposées par PRISME-ONE, micro-entreprise
-              immatriculée sous le numéro SIRET [À COMPLÉTER].
+              {/* ⚠️ OBLIGATOIRE — Remplir le SIRET AVANT mise en production */}
+              immatriculée sous le numéro SIRET [À COMPLÉTER AVANT PUBLICATION].
             </p>
           </section>
 
@@ -76,7 +77,20 @@ export default function CGV() {
           </section>
 
           <section>
-            <h2 className="font-vt text-[18px] mb-3" style={{ color: "#EDEDED" }}>6. Responsabilité</h2>
+            <h2 className="font-vt text-[18px] mb-3" style={{ color: "#EDEDED" }}>6. Garantie satisfait ou remboursé</h2>
+            <p>
+              PRISME-ONE propose une garantie satisfait ou remboursé sous 7 jours
+              calendaires à compter de la livraison du livrable principal (rapport
+              d&apos;audit, déploiement initial, etc.), à condition que le client signale
+              par écrit une non-conformité au périmètre défini dans le devis signé.
+              Cette garantie ne couvre pas les demandes de modification hors périmètre
+              initial. Le remboursement porte sur le montant de la prestation concernée,
+              hors frais déjà engagés pour des licences tierces.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-vt text-[18px] mb-3" style={{ color: "#EDEDED" }}>7. Responsabilité</h2>
             <p>
               PRISME-ONE s&apos;engage à mettre en œuvre tous les moyens nécessaires
               à la bonne exécution de ses prestations. La responsabilité de PRISME-ONE
@@ -85,7 +99,7 @@ export default function CGV() {
           </section>
 
           <section>
-            <h2 className="font-vt text-[18px] mb-3" style={{ color: "#EDEDED" }}>7. Droit applicable</h2>
+            <h2 className="font-vt text-[18px] mb-3" style={{ color: "#EDEDED" }}>8. Droit applicable</h2>
             <p>
               Les présentes conditions sont régies par le droit français. Tout litige
               sera soumis aux tribunaux compétents.

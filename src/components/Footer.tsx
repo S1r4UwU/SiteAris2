@@ -1,11 +1,10 @@
 "use client";
 
 const MARQUEE_TEXT =
-  "PRISME-ONE · FRANCE · 2026 · PENTEST · AUDIT · RÉPONSE AUX INCIDENTS · OSINT · SÉCURITÉ RÉSEAU · DÉVELOPPEMENT SÉCURISÉ · SERVICES IT · ";
+  "PRISME-ONE · FRANCE · 2026 · PENTEST · AUDIT · RÉPONSE AUX INCIDENTS · OSINT · SÉCURITÉ RÉSEAU · DÉVELOPPEMENT SÉCURISÉ · SERVICES IT";
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const marqueeDouble = MARQUEE_TEXT + MARQUEE_TEXT;
 
   return (
     <footer style={{ background: "#030303" }}>
@@ -34,8 +33,11 @@ export default function Footer() {
             className="flex whitespace-nowrap"
             style={{ animation: "marquee-slow 60s linear infinite" }}
           >
-            <span className="font-vt text-[16px] text-[#2A2A2A]">
-              {marqueeDouble}
+            <span className="font-vt text-[16px] text-[#2A2A2A] shrink-0">
+              {MARQUEE_TEXT}&nbsp;·&nbsp;
+            </span>
+            <span className="font-vt text-[16px] text-[#2A2A2A] shrink-0">
+              {MARQUEE_TEXT}&nbsp;·&nbsp;
             </span>
           </div>
         </div>
@@ -45,7 +47,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <p className="font-grotesk text-[13px] text-text-secondary leading-[1.7] max-w-xs">
               Cybersécurité et services informatiques sur mesure pour les
-              TPE/PME françaises. Un interlocuteur unique, des résultats
+              PME & ETI françaises. Un interlocuteur unique, des résultats
               concrets.
             </p>
           </div>

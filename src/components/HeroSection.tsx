@@ -68,7 +68,7 @@ export default function HeroSection() {
               className="mt-8 max-w-[520px] font-grotesk text-[15px] text-text-secondary leading-[1.7]"
             >
               Choisissez votre pack. Décrivez votre besoin. Votre infrastructure est
-              sécurisée rapidement. La cybersécurité enfin accessible aux TPE/PME.
+              sécurisée rapidement. La cybersécurité taillée pour les PME & ETI.
             </motion.p>
 
             <motion.div

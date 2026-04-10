@@ -33,9 +33,10 @@ export default function MentionsLegales() {
               Le site prisme-one.com est édité par :<br />
               <strong style={{ color: "#EDEDED" }}>PRISME-ONE</strong><br />
               Statut : Micro-entreprise<br />
-              SIRET : [À COMPLÉTER]<br />
+              {/* ⚠️ OBLIGATOIRE LCEN — Remplir SIRET et nom du responsable AVANT mise en production */}
+              SIRET : [À COMPLÉTER AVANT PUBLICATION]<br />
               Email : contact@prisme-one.com<br />
-              Responsable de la publication : [À COMPLÉTER]
+              Responsable de la publication : [À COMPLÉTER AVANT PUBLICATION]
             </p>
           </section>
 

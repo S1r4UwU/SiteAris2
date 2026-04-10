@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "OFFRES", href: "#offres" },
-  { label: "INFRASTRUCTURE", href: "#infrastructure" },
+  { label: "APPROCHE", href: "#infrastructure" },
   { label: "TERMINAL", href: "#contact" },
 ];
 

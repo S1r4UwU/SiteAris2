@@ -9,17 +9,17 @@ const BASE_URL = "https://prisme-one.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "PRISME-ONE — Cybersécurité & Services IT pour TPE/PME",
+    default: "PRISME-ONE — Cybersécurité & Services IT pour PME & ETI",
     template: "%s | PRISME-ONE",
   },
   description:
-    "Pentest, audit de sécurité, réponse aux incidents et services informatiques. Protection sur mesure pour TPE/PME françaises.",
+    "Pentest, audit de sécurité, réponse aux incidents et services informatiques. Protection sur mesure pour PME & ETI françaises.",
   keywords: [
     "cybersécurité",
     "pentest",
     "audit sécurité",
-    "TPE",
     "PME",
+    "ETI",
     "RGPD",
     "OSINT",
     "réponse incidents",
@@ -31,15 +31,15 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: BASE_URL,
     siteName: "PRISME-ONE",
-    title: "PRISME-ONE — Cybersécurité & Services IT pour TPE/PME",
+    title: "PRISME-ONE — Cybersécurité & Services IT pour PME & ETI",
     description:
-      "Pentest, audit de sécurité, réponse aux incidents et services informatiques. Protection sur mesure pour TPE/PME françaises.",
+      "Pentest, audit de sécurité, réponse aux incidents et services informatiques. Protection sur mesure pour PME & ETI françaises.",
   },
   twitter: {
     card: "summary_large_image",
     title: "PRISME-ONE — Cybersécurité & Services IT",
     description:
-      "Pentest, audit de sécurité, réponse aux incidents. Protection sur mesure pour TPE/PME françaises.",
+      "Pentest, audit de sécurité, réponse aux incidents. Protection sur mesure pour PME & ETI françaises.",
   },
   robots: {
     index: true,
@@ -53,7 +53,7 @@ const jsonLd = {
   name: "PRISME-ONE",
   url: BASE_URL,
   description:
-    "Cybersécurité et services informatiques sur mesure pour TPE/PME françaises. Test d'intrusion, audit de sécurité, réponse aux incidents, OSINT.",
+    "Cybersécurité et services informatiques sur mesure pour PME & ETI françaises. Test d'intrusion, audit de sécurité, réponse aux incidents, OSINT.",
   areaServed: { "@type": "Country", name: "France" },
   serviceType: [
     "Test d'intrusion",
