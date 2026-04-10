@@ -4,12 +4,12 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BOOT_LINES = [
-  "ARIS CYBERSECURITY v2.6.1",
-  "© 2026 ARIS SYSTEMS — FRANCE",
+  "PRISME-ONE SECURITY v1.0",
+  "© 2026 PRISME-ONE — FRANCE",
   "[████████████████████] CHARGEMENT MODULES...",
-  "✓ EDR ENGINE — OK",
-  "✓ SIEM CLOUD — OK",
-  "✓ SOC 24/7 — OPÉRATIONNEL",
+  "✓ SCAN ENGINE — OK",
+  "✓ NETWORK AUDIT — OK",
+  "✓ OSINT MODULE — OPÉRATIONNEL",
   "> INITIALISATION COMPLÈTE",
 ];
 
@@ -89,6 +89,7 @@ export default function BootScreen({ onComplete }: { onComplete: () => void }) {
 
           <button
             onClick={skip}
+            aria-label="Passer l'écran de démarrage"
             className="fixed bottom-8 right-8 text-[11px] tracking-[0.15em] text-white/15 hover:text-white/40 transition-colors uppercase"
             style={{ fontFamily: "'VT323', monospace" }}
           >

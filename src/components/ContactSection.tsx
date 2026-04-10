@@ -52,13 +52,13 @@ export default function ContactSection() {
           </motion.h2>
 
           <p className="mt-6 font-grotesk text-[15px] text-text-secondary leading-[1.7] max-w-lg mx-auto">
-            Notre équipe d&apos;ingénieurs configure votre environnement en moins de 24
-            heures. Pas de rendez-vous commercial, pas d&apos;attente.
+            Décrivez votre besoin, je reviens vers vous sous 48h avec un
+            premier diagnostic. Pas de rendez-vous commercial, pas d&apos;attente.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-10 flex justify-center">
             <a
-              href="mailto:contact@aris.cyber"
+              href="mailto:contact@prisme-one.com"
               className="group inline-flex items-center justify-center gap-3 font-mono text-[11px] tracking-[0.15em] uppercase px-8 py-4 bg-text text-bg hover:bg-transparent hover:text-text transition-all duration-200"
               style={{ border: "1px solid #EDEDED" }}
             >
@@ -68,22 +68,11 @@ export default function ContactSection() {
                 className="transition-transform duration-200 group-hover:translate-x-1"
               />
             </a>
-            <a
-              href="tel:+33100000000"
-              className="inline-flex items-center justify-center gap-3 font-mono text-[11px] tracking-[0.15em] uppercase px-8 py-4 text-text-secondary hover:text-text transition-all duration-200"
-              style={{ border: "1px solid rgba(255,255,255,0.2)" }}
-            >
-              +33 1 00 00 00 00
-            </a>
           </div>
-
-          <p className="mt-8 font-vt text-[16px] text-text-muted">
-            Déploiement moyen : 18h · Satisfaction client : 98.4% · Support 24/7
-          </p>
 
           <div className="mt-10 font-mono text-[11px] text-text-tertiary/50 tracking-[0.1em]">
             <span className="text-cyber-green/50">$</span> ssh
-            deploy@aris.cyber — Temps de réponse moyen : 2h
+            contact@prisme-one.com
           </div>
         </motion.div>
       </div>

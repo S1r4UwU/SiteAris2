@@ -1,19 +1,22 @@
 "use client";
 
-const PARTNERS = [
-  "Microsoft",
-  "CrowdStrike",
-  "Palo Alto Networks",
-  "Fortinet",
-  "SentinelOne",
+const STACK = [
+  "Kali Linux",
+  "Burp Suite",
+  "Nmap",
+  "Wireshark",
+  "Metasploit",
+  "Python",
   "Wazuh",
-  "Acronis",
-  "Veeam",
   "Elastic SIEM",
+  "Next.js",
+  "TypeScript",
+  "Linux",
+  "Suricata",
 ];
 
 export default function Marquee() {
-  const list = [...PARTNERS, ...PARTNERS];
+  const list = [...STACK, ...STACK];
 
   return (
     <section
@@ -27,7 +30,7 @@ export default function Marquee() {
         className="block text-center font-vt text-[14px] uppercase mb-6"
         style={{ color: "#333333", letterSpacing: "0.2em" }}
       >
-        PROPULSÉ PAR LES TECHNOLOGIES DE POINTE
+        STACK & OUTILS
       </span>
 
       <div className="relative w-full overflow-hidden">

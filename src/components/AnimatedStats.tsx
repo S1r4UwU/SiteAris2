@@ -61,11 +61,11 @@ function AnimatedNumber({
   );
 }
 
-const STATS = [
-  { target: 247, suffix: "", label: "Entreprises protégées en France" },
-  { target: 99.97, suffix: "%", label: "Taux de détection", decimals: 2 },
-  { target: 2, suffix: "h", prefix: "<", label: "Déploiement complet" },
-  { target: 24, suffix: "/7", label: "Monitoring actif" },
+const STATS: { target: number; suffix: string; prefix?: string; decimals?: number; label: string }[] = [
+  { target: 3, suffix: "+", label: "Années d'expérience terrain" },
+  { target: 1, suffix: "", label: "Interlocuteur unique et dédié" },
+  { target: 48, suffix: "h", prefix: "<", label: "Délai de premier contact" },
+  { target: 100, suffix: "%", label: "Opérateur français" },
 ];
 
 export default function AnimatedStats() {

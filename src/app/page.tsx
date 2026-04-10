@@ -18,7 +18,7 @@ export default function Home() {
   const [showBoot, setShowBoot] = useState(false);
 
   useEffect(() => {
-    const hasBooted = localStorage.getItem("aris_booted");
+    const hasBooted = localStorage.getItem("prisme_booted");
     if (hasBooted) {
       setBooted(true);
     } else {
@@ -27,7 +27,7 @@ export default function Home() {
   }, []);
 
   const handleBootComplete = () => {
-    localStorage.setItem("aris_booted", "true");
+    localStorage.setItem("prisme_booted", "true");
     setBooted(true);
     setShowBoot(false);
   };

@@ -12,7 +12,6 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-start overflow-hidden">
       <GridBackground />
 
-      {/* Radial halo vert behind title */}
       <div
         className="absolute inset-0 pointer-events-none z-0"
         style={{
@@ -68,8 +67,8 @@ export default function HeroSection() {
               transition={{ delay: 0.9, duration: 0.4 }}
               className="mt-8 max-w-[520px] font-grotesk text-[15px] text-text-secondary leading-[1.7]"
             >
-              Choisissez votre pack. Payez en ligne. Votre infrastructure est
-              sécurisée en moins de 24h. La cybersécurité enfin accessible aux TPE/PME.
+              Choisissez votre pack. Décrivez votre besoin. Votre infrastructure est
+              sécurisée rapidement. La cybersécurité enfin accessible aux TPE/PME.
             </motion.p>
 
             <motion.div
@@ -94,14 +93,13 @@ export default function HeroSection() {
                 className="inline-flex items-center justify-center gap-3 font-mono text-[11px] tracking-[0.15em] uppercase px-8 py-4 text-text-secondary hover:text-text transition-all duration-200"
                 style={{ border: "1px solid rgba(255,255,255,0.2)" }}
               >
-                NOTRE INFRASTRUCTURE
+                NOTRE APPROCHE
               </a>
             </motion.div>
           </motion.div>
 
           {/* Right column — Floating elements (desktop only) */}
           <div className="hidden md:flex flex-col gap-6 relative w-[280px] shrink-0 pt-8">
-            {/* Element A — System card */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -113,20 +111,19 @@ export default function HeroSection() {
               }}
             >
               <span className="font-vt text-[16px] text-text-tertiary block mb-2">
-                STATUT RÉSEAU
+                STATUT SYSTÈME
               </span>
               <div className="font-vt text-[16px] text-cyber-green mb-1">
                 {"██████████"} 100%
               </div>
               <div className="font-vt text-[16px] text-text-muted">
-                MENACES BLOQUÉES : 1,247
+                MODULES : ACTIFS
               </div>
               <div className="font-vt text-[16px] text-text-muted">
                 DERNIÈRE MAJ : 2s
               </div>
             </motion.div>
 
-            {/* Element B — LIVE badge */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -138,27 +135,23 @@ export default function HeroSection() {
                 style={{ animation: "pulse-dot 2s ease-in-out infinite" }}
               />
               <span className="font-vt text-[16px] text-cyber-green">
-                SOC OPÉRATIONNEL
+                OPÉRATIONNEL
               </span>
             </motion.div>
 
-            {/* Element C — CLI line */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.25 }}
               transition={{ delay: 2, duration: 0.5 }}
               className="mt-auto font-mono text-[11px] text-text-tertiary"
             >
-              $ aris-cli scan --target=network --deep
+              $ prisme scan --target=network --deep
               <span style={{ animation: "blink-cursor 1s step-end infinite" }}>▋</span>
             </motion.div>
           </div>
         </div>
 
-        {/* Dashboard SOC */}
         <ThreatMonitor />
-
-        {/* Animated stats */}
         <AnimatedStats />
       </div>
 

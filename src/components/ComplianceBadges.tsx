@@ -2,11 +2,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const BADGES = [
-  "ISO 27001",
-  "RGPD Compliant",
-  "ANSSI Recommandé",
-  "DORA Ready",
+const FRAMEWORKS = [
+  "Framework ANSSI",
+  "Méthodologie OWASP",
+  "MITRE ATT&CK",
+  "NIST Cybersecurity",
 ];
 
 export default function ComplianceBadges() {
@@ -17,11 +17,11 @@ export default function ComplianceBadges() {
     <section ref={ref} className="relative py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
         <span className="font-vt text-[16px] text-text-muted uppercase block mb-6">
-          {"// CONFORMITÉ & CERTIFICATIONS"}
+          {"// FRAMEWORKS & MÉTHODOLOGIES APPLIQUÉS"}
         </span>
 
         <div className="flex flex-wrap gap-3">
-          {BADGES.map((badge, i) => (
+          {FRAMEWORKS.map((badge, i) => (
             <motion.span
               key={badge}
               initial={{ opacity: 0, y: 8 }}

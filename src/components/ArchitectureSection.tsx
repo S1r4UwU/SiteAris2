@@ -117,7 +117,7 @@ export default function ArchitectureSection() {
               <animate attributeName="stroke-opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite" />
             </rect>
             <text x={SHIELD_CX} y={SHIELD_Y + 2} textAnchor="middle" fill="#00FF41" fontSize="14" fontFamily="'VT323', monospace" fontWeight="700">
-              ARIS SHIELD
+              PRISME SHIELD
             </text>
             <text x={SHIELD_CX} y={SHIELD_Y + 22} textAnchor="middle" fill="#555555" fontSize="10" fontFamily="'VT323', monospace">
               EDR · FIREWALL · SIEM · SOC 24/7

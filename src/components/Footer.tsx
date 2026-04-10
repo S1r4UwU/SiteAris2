@@ -1,7 +1,7 @@
 "use client";
 
 const MARQUEE_TEXT =
-  "ARIS CYBERSECURITY \u00B7 PARIS, FRANCE \u00B7 2026 \u00B7 PROPULSÉ PAR CrowdStrike + SentinelOne + Elastic SIEM \u00B7 ISO 27001 \u00B7 RGPD \u00B7 DORA \u00B7 TOUTES LES INFRASTRUCTURES MÉRITENT UNE PROTECTION DE CLASSE ENTREPRISE \u00B7 ";
+  "PRISME-ONE · FRANCE · 2026 · PENTEST · AUDIT · RÉPONSE AUX INCIDENTS · OSINT · SÉCURITÉ RÉSEAU · DÉVELOPPEMENT SÉCURISÉ · SERVICES IT · ";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -23,9 +23,9 @@ export default function Footer() {
         {/* Logo + version */}
         <div className="mb-8">
           <span className="font-vt text-[64px] text-text leading-none">
-            ARIS<span className="text-cyber-green">_</span>
+            PRISME<span className="text-cyber-green">_</span>
           </span>
-          <span className="font-vt text-[18px] text-white/20 ml-3">v2.6.1</span>
+          <span className="font-vt text-[18px] text-white/20 ml-3">v1.0</span>
         </div>
 
         {/* Marquee ticker */}
@@ -44,8 +44,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
           <div className="md:col-span-1">
             <p className="font-grotesk text-[13px] text-text-secondary leading-[1.7] max-w-xs">
-              Cybersécurité de classe entreprise pour les TPE/PME françaises.
-              Plug & Play.
+              Cybersécurité et services informatiques sur mesure pour les
+              TPE/PME françaises. Un interlocuteur unique, des résultats
+              concrets.
             </p>
           </div>
 
@@ -55,11 +56,11 @@ export default function Footer() {
             </span>
             <ul className="space-y-2">
               {[
-                "Anti-Ransomware",
-                "Audit Express",
-                "Pack RGPD",
-                "SOC Managé",
-                "Bastion Zero-Trust",
+                "Test d'intrusion",
+                "Audit de sécurité",
+                "Réponse aux incidents",
+                "Sécurité réseau",
+                "Services IT",
               ].map((item) => (
                 <li key={item}>
                   <a
@@ -80,7 +81,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 "Infrastructure",
-                "Certifications",
+                "Méthodologie",
                 "Conditions générales",
                 "Politique de confidentialité",
               ].map((item) => (
@@ -103,22 +104,14 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="mailto:contact@aris.cyber"
+                  href="mailto:contact@prisme-one.com"
                   className="font-mono text-[12px] text-text-secondary hover:text-text transition-colors duration-200"
                 >
-                  contact@aris.cyber
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+33100000000"
-                  className="font-mono text-[12px] text-text-secondary hover:text-text transition-colors duration-200"
-                >
-                  +33 1 00 00 00 00
+                  contact@prisme-one.com
                 </a>
               </li>
               <li className="font-grotesk text-[13px] text-text-secondary">
-                Paris, France
+                France · Intervention nationale
               </li>
             </ul>
           </div>
@@ -130,7 +123,7 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
         >
           <span className="font-vt text-[14px] text-text-tertiary/30">
-            © {year} ARIS CYBERSECURITY. TOUS DROITS RÉSERVÉS.
+            © {year} PRISME-ONE. TOUS DROITS RÉSERVÉS.
           </span>
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-cyber-green animate-pulse" />
@@ -139,11 +132,6 @@ export default function Footer() {
             </span>
           </div>
         </div>
-
-        <p className="text-xs text-gray-600 font-mono mt-2 text-center">
-          BUILT BY ARIS SYSTEMS · POWERED BY CROWDSTRIKE + ELASTIC SIEM ·
-          HOSTED IN FRANCE · NO DATA LEAVES EU · v2.6.1
-        </p>
 
         <div
           className="mt-4 text-center font-mono text-gray-700 text-xs select-none"

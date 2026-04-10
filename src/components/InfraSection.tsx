@@ -2,36 +2,36 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Server, Globe, Cpu, Database } from "lucide-react";
+import { Search, Shield, Eye, Zap } from "lucide-react";
 
-const INFRA_ITEMS = [
+const APPROACH_ITEMS = [
   {
-    icon: Server,
-    title: "INFRASTRUCTURE SOUVERAINE",
+    icon: Search,
+    title: "AUDIT & DIAGNOSTIC",
     description:
-      "Hébergement 100% français sur datacenters certifiés Tier III+. Aucune donnée ne quitte le territoire national.",
-    tag: "FR-ONLY",
+      "Analyse complète de votre surface d'attaque. Scan de vulnérabilités, test d'intrusion, cartographie réseau. Rapport clair avec plan d'action priorisé.",
+    tag: "PHASE 1",
   },
   {
-    icon: Globe,
-    title: "RÉSEAU ANYCAST",
+    icon: Shield,
+    title: "PROTECTION ACTIVE",
     description:
-      "Points de présence distribués pour une latence minimale. Protection DDoS intégrée sur toute la bande passante.",
-    tag: "< 5MS",
+      "Déploiement d'outils de sécurité adaptés à votre infrastructure. Solutions open-source et professionnelles, configurées sur mesure.",
+    tag: "PHASE 2",
   },
   {
-    icon: Cpu,
-    title: "MOTEUR IA PROPRIÉTAIRE",
+    icon: Eye,
+    title: "VEILLE & OSINT",
     description:
-      "Détection comportementale par machine learning entraîné sur des milliards de signaux de menace. Mise à jour en continu.",
-    tag: "ML/AI",
+      "Surveillance continue de vos actifs exposés. Renseignement en sources ouvertes pour anticiper les menaces ciblant votre secteur.",
+    tag: "CONTINU",
   },
   {
-    icon: Database,
-    title: "CHIFFREMENT E2E",
+    icon: Zap,
+    title: "RÉPONSE AUX INCIDENTS",
     description:
-      "AES-256 au repos, TLS 1.3 en transit. Clés managées en HSM certifié FIPS 140-2 Level 3.",
-    tag: "AES-256",
+      "Plan d'intervention en cas de compromission. Investigation, confinement, remédiation et rapport post-incident détaillé.",
+    tag: "URGENCE",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function InfraSection() {
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-2xl">
           <span className="font-vt text-[16px] text-text-tertiary uppercase block mb-4">
-            {"// INFRASTRUCTURE"}
+            {"// NOTRE APPROCHE"}
           </span>
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
@@ -62,11 +62,11 @@ export default function InfraSection() {
             className="font-grotesk text-3xl md:text-5xl font-bold text-text"
             style={{ letterSpacing: "-0.04em" }}
           >
-            Conçu pour résister.
+            Méthodique. Pragmatique.
           </motion.h2>
           <p className="mt-4 font-grotesk text-[15px] text-text-secondary leading-[1.7] max-w-lg">
-            Notre stack technique est pensée pour les environnements critiques.
-            Souveraineté, performance, résilience.
+            Une approche structurée en phases, adaptée à la taille et aux
+            risques réels de votre entreprise.
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export default function InfraSection() {
           className="grid grid-cols-1 md:grid-cols-2 gap-px"
           style={{ background: "rgba(255,255,255,0.06)" }}
         >
-          {INFRA_ITEMS.map((item, i) => (
+          {APPROACH_ITEMS.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}

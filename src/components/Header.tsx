@@ -37,7 +37,7 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-6 flex items-center justify-between h-16">
         <a href="#" className="font-vt text-[24px] text-text">
-          ARIS<span className="text-cyber-green">_</span>
+          PRISME<span className="text-cyber-green">_</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-1">

@@ -12,16 +12,16 @@ const MODULES = [
 ];
 
 const LOGS = [
-  { time: "14:32:01", type: "BLOCK", msg: "185.234.xx.xx \u2192 PORT 22" },
-  { time: "14:32:03", type: "ALERT", msg: "svchost.exe \u2014 PID 4821" },
-  { time: "14:32:07", type: "OK", msg: "Scan complete \u2014 0 threats" },
-  { time: "14:32:11", type: "BLOCK", msg: "Phishing URL \u2014 quarantined" },
+  { time: "14:32:01", type: "BLOCK", msg: "185.234.xx.xx → PORT 22" },
+  { time: "14:32:03", type: "ALERT", msg: "svchost.exe — PID 4821" },
+  { time: "14:32:07", type: "OK", msg: "Scan complete — 0 threats" },
+  { time: "14:32:11", type: "BLOCK", msg: "Phishing URL — quarantined" },
   { time: "14:32:15", type: "INFO", msg: "47 endpoints synced" },
-  { time: "14:32:19", type: "BLOCK", msg: "Ransomware sig \u2014 isolated" },
-  { time: "14:32:23", type: "OK", msg: "Firewall \u2014 312 rules active" },
+  { time: "14:32:19", type: "BLOCK", msg: "Ransomware sig — isolated" },
+  { time: "14:32:23", type: "OK", msg: "Firewall — 312 rules active" },
   { time: "14:32:27", type: "ALERT", msg: "Brute force 10.0.0.44:3389" },
   { time: "14:32:31", type: "INFO", msg: "Backup 2.4TB encrypted" },
-  { time: "14:32:35", type: "BLOCK", msg: "C2 beacon \u2014 isolated" },
+  { time: "14:32:35", type: "BLOCK", msg: "C2 beacon — isolated" },
 ];
 
 const BAR_HEIGHTS = [45, 65, 30, 80, 55, 40, 70];
@@ -37,7 +37,6 @@ const THREAT_POINTS = [
   { x: 78, y: 52, label: "IN" },
 ];
 
-/* Ultra-simplified world map SVG path (continents outline) */
 const WORLD_PATH =
   "M12,28 L18,22 L22,24 L28,20 L32,22 L35,18 L42,16 L48,18 L50,22 L54,20 L58,22 L62,18 L66,20 L72,16 L78,18 L82,22 L88,20 L92,24 L88,28 L84,32 L80,30 L76,34 L72,32 L68,36 L64,34 L60,38 L56,36 L52,40 L48,38 L44,42 L40,40 L36,44 L32,42 L28,46 L24,44 L20,48 L16,44 L12,40 L10,36 L12,32 Z M54,46 L58,44 L62,48 L66,46 L70,50 L74,48 L78,52 L82,50 L86,54 L82,58 L78,56 L74,60 L70,58 L66,62 L62,58 L58,56 L54,52 L52,48 Z";
 
@@ -94,7 +93,10 @@ export default function ThreatMonitor() {
             <span className="w-3 h-3 rounded-full" style={{ background: "#28C840" }} />
           </div>
           <span className="font-mono text-[10px] tracking-[0.1em] text-text-tertiary ml-2">
-            ARIS — THREAT MONITOR v2.1
+            PRISME — THREAT MONITOR
+          </span>
+          <span className="ml-auto font-vt text-[11px] tracking-[0.15em] text-text-tertiary/40 uppercase">
+            SIMULATION // DÉMO
           </span>
         </div>
 
@@ -115,7 +117,7 @@ export default function ThreatMonitor() {
                       animation: "pulse-dot 2s ease-in-out infinite",
                     }}
                   >
-                    {mod.active ? "\u25CF" : "\u25CC"}
+                    {mod.active ? "●" : "◌"}
                   </span>
                   <span className="font-vt text-[14px] text-text-tertiary truncate">
                     {mod.name}
@@ -137,7 +139,7 @@ export default function ThreatMonitor() {
             style={{ borderRight: "1px solid rgba(255,255,255,0.08)" }}
           >
             <span className="font-vt text-[14px] text-cyber-green/70 mb-2 shrink-0">
-              {"// LIVE_THREAT_FEED"}
+              {"// SIMULATED_THREAT_FEED"}
             </span>
             <div className="flex-1 overflow-hidden">
               {visibleLogs.map((log, i) => (
@@ -195,7 +197,7 @@ export default function ThreatMonitor() {
           {/* Col 4 — World Map */}
           <div className="w-[24%] p-3 flex flex-col">
             <span className="font-vt text-[12px] text-cyber-green/70 mb-2">
-              GEO_THREATS — LIVE
+              GEO_THREATS — DÉMO
             </span>
             <div className="flex-1 relative">
               <svg viewBox="0 0 100 70" className="w-full h-full">
