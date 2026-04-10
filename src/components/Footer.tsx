@@ -80,17 +80,18 @@ export default function Footer() {
             </span>
             <ul className="space-y-2">
               {[
-                "Infrastructure",
-                "Méthodologie",
-                "Conditions générales",
-                "Politique de confidentialité",
+                { label: "Infrastructure", href: "#infrastructure" },
+                { label: "Méthodologie", href: "#infrastructure" },
+                { label: "Mentions légales", href: "/mentions-legales" },
+                { label: "Conditions générales", href: "/cgv" },
+                { label: "Confidentialité", href: "/confidentialite" },
               ].map((item) => (
-                <li key={item}>
+                <li key={item.label}>
                   <a
-                    href="#"
+                    href={item.href}
                     className="font-grotesk text-[13px] text-text-secondary hover:text-text transition-colors duration-200"
                   >
-                    {item}
+                    {item.label}
                   </a>
                 </li>
               ))}

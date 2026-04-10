@@ -18,7 +18,7 @@ export interface Pack {
   gridArea?: string;
 }
 
-export default function PackCard({ pack }: { pack: Pack }) {
+export default function PackCard({ pack, onShowDetails }: { pack: Pack; onShowDetails?: (id: string) => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [hovered, setHovered] = useState(false);
@@ -58,14 +58,17 @@ export default function PackCard({ pack }: { pack: Pack }) {
           >
             <pack.icon size={16} />
           </div>
-          <div>
-            <h3 className="font-vt text-[18px] text-text uppercase">
+          <button
+            onClick={() => onShowDetails?.(pack.id)}
+            className="text-left"
+          >
+            <h3 className="font-vt text-[18px] text-text uppercase hover:text-cyber-green transition-colors">
               {pack.name}
             </h3>
             <p className="font-vt text-[16px] text-text-tertiary uppercase mt-0.5">
               {pack.tagline}
             </p>
-          </div>
+          </button>
         </div>
         {pack.featured && (
           <span

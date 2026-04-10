@@ -3,23 +3,19 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
+import { PACKS } from "@/data/packs";
 
-/* ── Stripe Payment Links (replace with real links from your Stripe dashboard) ── */
-const STRIPE_LINKS: Record<string, string> = {
-  "anti-ransomware": "https://buy.stripe.com/REPLACE_ANTI_RANSOMWARE",
-  "audit-express": "https://buy.stripe.com/REPLACE_AUDIT_EXPRESS",
-  "conformite-rgpd": "https://buy.stripe.com/REPLACE_PACK_RGPD",
-  "soc-manage": "https://buy.stripe.com/REPLACE_SOC_MANAGE",
-  "bastion": "https://buy.stripe.com/REPLACE_BASTION",
-};
+const PACK_MAP = Object.fromEntries(PACKS.map((p) => [p.id, p]));
 
-const PACK_DATA: Record<string, { name: string; price: string; period: string; desc: string }> = {
-  "anti-ransomware": { name: "ANTI-RANSOMWARE", price: "490€", period: "/mois", desc: "EDR/XDR managé, isolation automatique, analyse comportementale" },
-  "audit-express": { name: "AUDIT EXPRESS", price: "1 200€", period: "unique", desc: "Scan de vulnérabilités, pentest light, rapport exécutif + plan de remédiation" },
-  "conformite-rgpd": { name: "PACK RGPD", price: "350€", period: "/mois", desc: "DPO externalisé, registre des traitements, gestion des consentements" },
-  "soc-manage": { name: "SOC MANAGÉ", price: "890€", period: "/mois", desc: "SIEM cloud-native, threat intelligence, réponse à incident automatisée" },
-  "bastion": { name: "BASTION", price: "290€", period: "/mois", desc: "VPN Zero-Trust, MFA adaptatif, gestion des accès privilégiés" },
-};
+function buildStripeUrl(packId: string, email: string, answers: Record<string, string>): string {
+  const pack = PACK_MAP[packId];
+  if (!pack) return "#";
+  const url = new URL(pack.stripeLink);
+  if (email) url.searchParams.set("prefilled_email", email);
+  const ref = [answers.parkSize, answers.need, answers.incident].filter(Boolean).join("_");
+  if (ref) url.searchParams.set("client_reference_id", ref);
+  return url.toString();
+}
 
 type Step = 0 | 1 | 2 | 3 | 4; // 0-3 = questions, 4 = result
 
@@ -184,11 +180,46 @@ export default function WizardCLI({ open, onClose }: WizardCLIProps) {
   };
 
   const recommendation = getRecommendation(answers.parkSize, answers.need, answers.incident);
-  const pack = PACK_DATA[recommendation];
-  const stripeLink = STRIPE_LINKS[recommendation];
+  const pack = PACK_MAP[recommendation];
+  const stripeUrl = buildStripeUrl(recommendation, answers.email, answers);
 
-  const sendFallback = () => {
+  const sendDiagnostic = useCallback(async () => {
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "diagnostic",
+          parkSize: answers.parkSize,
+          need: answers.need,
+          incident: answers.incident,
+          email: answers.email,
+        }),
+      });
+    } catch {
+      /* silent — non-blocking */
+    }
+  }, [answers]);
+
+  useEffect(() => {
+    if (step === 4) sendDiagnostic();
+  }, [step, sendDiagnostic]);
+
+  const sendFallback = async () => {
     if (!fallbackMsg.trim()) return;
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "freeform", message: fallbackMsg }),
+      });
+      if (res.ok) {
+        onClose();
+        return;
+      }
+    } catch {
+      /* fallback to mailto */
+    }
     const subject = encodeURIComponent("Demande via prisme-one.com");
     const body = encodeURIComponent(fallbackMsg);
     window.location.href = `mailto:contact@prisme-one.com?subject=${subject}&body=${body}`;
@@ -387,7 +418,7 @@ export default function WizardCLI({ open, onClose }: WizardCLIProps) {
                         </div>
                       </div>
                       <p className="font-grotesk text-[13px] text-text-secondary leading-relaxed mb-5">
-                        {pack.desc}
+                        {pack.description}
                       </p>
 
                       {answers.incident === "yes" && (
@@ -401,7 +432,7 @@ export default function WizardCLI({ open, onClose }: WizardCLIProps) {
 
                       <div className="flex flex-col sm:flex-row gap-3">
                         <a
-                          href={stripeLink}
+                          href={stripeUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group inline-flex items-center justify-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-3.5 bg-text text-bg hover:bg-transparent hover:text-text transition-all duration-200"
@@ -411,7 +442,7 @@ export default function WizardCLI({ open, onClose }: WizardCLIProps) {
                           <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5" />
                         </a>
                         <a
-                          href={`mailto:contact@prisme-one.com?subject=${encodeURIComponent(`Demande : ${pack.name}`)}&body=${encodeURIComponent(`Bonjour,\n\nJe suis intéressé par le pack ${pack.name} (${pack.price} ${pack.period}).\n\nTaille du parc : ${answers.parkSize}\nBesoin : ${answers.need}\nIncident passé : ${answers.incident}\n${answers.email ? `Email : ${answers.email}` : ""}\n\nMerci.`)}`}
+                          href={`mailto:contact@prisme-one.com?subject=${encodeURIComponent(`Demande : ${pack.name}`)}`}
                           className="inline-flex items-center justify-center gap-2 font-mono text-[11px] tracking-[0.1em] uppercase px-6 py-3.5 text-text-secondary hover:text-text transition-all duration-200"
                           style={{ border: "1px solid rgba(255,255,255,0.15)" }}
                         >

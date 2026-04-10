@@ -159,7 +159,11 @@ export default function BentoGrid() {
         style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
       >
         {PACKS.map((pack) => (
-          <PackCard key={pack.id} pack={pack} />
+          <PackCard
+            key={pack.id}
+            pack={pack}
+            onShowDetails={(id) => window.dispatchEvent(new CustomEvent("open-drawer", { detail: id }))}
+          />
         ))}
       </div>
 

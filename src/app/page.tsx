@@ -14,11 +14,15 @@ import TrustSignals from "@/components/TrustSignals";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WizardCLI from "@/components/WizardCLI";
+import ServiceDrawer from "@/components/ServiceDrawer";
+import { PACKS } from "@/data/packs";
+import { getPackBySlug } from "@/data/packs";
 
 export default function Home() {
   const [booted, setBooted] = useState(false);
   const [showBoot, setShowBoot] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
+  const [drawerPackId, setDrawerPackId] = useState<string | null>(null);
 
   useEffect(() => {
     const hasBooted = localStorage.getItem("prisme_booted");
@@ -30,9 +34,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const handler = () => setWizardOpen(true);
-    window.addEventListener("open-wizard", handler);
-    return () => window.removeEventListener("open-wizard", handler);
+    const openWizard = () => setWizardOpen(true);
+    const openDrawer = (e: Event) => {
+      const id = (e as CustomEvent).detail;
+      if (id) setDrawerPackId(id);
+    };
+    window.addEventListener("open-wizard", openWizard);
+    window.addEventListener("open-drawer", openDrawer);
+    return () => {
+      window.removeEventListener("open-wizard", openWizard);
+      window.removeEventListener("open-drawer", openDrawer);
+    };
   }, []);
 
   const handleBootComplete = () => {
@@ -46,6 +58,8 @@ export default function Home() {
   }
 
   if (!booted) return null;
+
+  const drawerPack = drawerPackId ? getPackBySlug(drawerPackId) ?? null : null;
 
   return (
     <MotionConfig reducedMotion="user">
@@ -62,6 +76,13 @@ export default function Home() {
       </main>
       <Footer />
       <WizardCLI open={wizardOpen} onClose={() => setWizardOpen(false)} />
+      {drawerPack && (
+        <ServiceDrawer
+          pack={drawerPack}
+          onClose={() => setDrawerPackId(null)}
+          onDeploy={() => { setDrawerPackId(null); setWizardOpen(true); }}
+        />
+      )}
     </MotionConfig>
   );
 }

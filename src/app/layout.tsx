@@ -4,8 +4,14 @@ import GlobalGrid from "@/components/GlobalGrid";
 import FilmGrain from "@/components/FilmGrain";
 import CustomCursor from "@/components/CustomCursor";
 
+const BASE_URL = "https://prisme-one.com";
+
 export const metadata: Metadata = {
-  title: "PRISME-ONE — Cybersécurité & Services IT pour TPE/PME",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "PRISME-ONE — Cybersécurité & Services IT pour TPE/PME",
+    template: "%s | PRISME-ONE",
+  },
   description:
     "Pentest, audit de sécurité, réponse aux incidents et services informatiques. Protection sur mesure pour TPE/PME françaises.",
   keywords: [
@@ -17,8 +23,48 @@ export const metadata: Metadata = {
     "RGPD",
     "OSINT",
     "réponse incidents",
+    "sécurité réseau",
     "France",
   ],
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: BASE_URL,
+    siteName: "PRISME-ONE",
+    title: "PRISME-ONE — Cybersécurité & Services IT pour TPE/PME",
+    description:
+      "Pentest, audit de sécurité, réponse aux incidents et services informatiques. Protection sur mesure pour TPE/PME françaises.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PRISME-ONE — Cybersécurité & Services IT",
+    description:
+      "Pentest, audit de sécurité, réponse aux incidents. Protection sur mesure pour TPE/PME françaises.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "PRISME-ONE",
+  url: BASE_URL,
+  description:
+    "Cybersécurité et services informatiques sur mesure pour TPE/PME françaises. Test d'intrusion, audit de sécurité, réponse aux incidents, OSINT.",
+  areaServed: { "@type": "Country", name: "France" },
+  serviceType: [
+    "Test d'intrusion",
+    "Audit de sécurité",
+    "Réponse aux incidents",
+    "OSINT",
+    "Sécurité réseau",
+    "Services informatiques",
+  ],
+  email: "contact@prisme-one.com",
+  priceRange: "€€",
 };
 
 export default function RootLayout({
@@ -28,6 +74,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased">
         <GlobalGrid />
         <CustomCursor />
