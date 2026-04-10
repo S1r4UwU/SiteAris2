@@ -60,6 +60,33 @@
 
 .section-light {
   background-color: #F5F5F0;
+  position: relative;
+}
+
+.section-light::before,
+.section-light::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-light::before {
+  top: 0;
+  background: linear-gradient(to bottom, #050505, #F5F5F0);
+}
+
+.section-light::after {
+  bottom: 0;
+  background: linear-gradient(to bottom, #F5F5F0, #050505);
+}
+
+.section-light > * {
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes pulse-dot {
