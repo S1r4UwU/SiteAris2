@@ -3,11 +3,11 @@
 
 @theme {
   --color-bg: #050505;
-  --color-surface: #0A0A0A;
-  --color-surface-light: #111111;
-  --color-card: #0D0D0D;
+  --color-surface: #0F0F0F;
+  --color-surface-light: #1A1A1A;
+  --color-card: #141414;
   --color-border: #222222;
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.10);
   --color-border-hover: rgba(255, 255, 255, 0.2);
   --color-text: #EDEDED;
   --color-text-secondary: #888888;
